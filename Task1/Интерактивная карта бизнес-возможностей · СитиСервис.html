@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///C:/Users/valya/Downloads/deepseek_html_20260806_45b1c0.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта бизнес-возможностей · СитиСервис</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #f4f7fc;
+            padding: 24px;
+            color: #1a2639;
+        }
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        header h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        header h1 small {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #4a5a72;
+            background: #eef2f7;
+            padding: 2px 14px;
+            border-radius: 30px;
+        }
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: white;
+            border: 1px solid #d0d9e8;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #1a2b3e;
+            cursor: pointer;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fafcff;
+        }
+        .btn-primary {
+            background: #1a2b3e;
+            border: 1px solid #1a2b3e;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2d4059;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px dashed #b4c2d6;
+        }
+        .btn-outline:hover {
+            background: #eef2f7;
+            border-color: #7a8aa0;
+        }
+        .btn-danger {
+            border-color: #f5d6d6;
+            color: #b33a3a;
+        }
+        .btn-danger:hover {
+            background: #fff0f0;
+        }
+        .btn-png {
+            border-color: #a0c4d4;
+            color: #2a5a7a;
+            background: #eef7fc;
+        }
+        .btn-png:hover {
+            background: #dceef7;
+            border-color: #7aacc4;
+        }
+        .btn-move {
+            border-color: #d0d9e8;
+            color: #4a5a72;
+            background: #f8faff;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+        }
+        .btn-move:hover {
+            background: #e8eef7;
+        }
+        .btn-move:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .project-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.06);
+            padding: 20px 24px 24px;
+            transition: 0.15s;
+            border: 1px solid #e9edf4;
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f4fa;
+        }
+        .project-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .project-title h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .project-title .badge {
+            background: #eef2f7;
+            border-radius: 40px;
+            padding: 2px 14px;
+            font-size: 0.8rem;
+            color: #2d4059;
+        }
+        .project-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .l1-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .l1-block {
+            background: #f9fbfe;
+            border-radius: 20px;
+            padding: 16px 18px 18px;
+            border-left: 6px solid #d0d9e8;
+            transition: 0.1s;
+        }
+        .l1-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .l1-header h3 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1f3348;
+            letter-spacing: -0.01em;
+        }
+        .l1-actions {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        .l2-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 12px;
+        }
+        .capability-tag {
+            border-radius: 40px;
+            padding: 6px 18px 6px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #dee6f0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            transition: 0.1s;
+            cursor: default;
+        }
+        .cap-red {
+            background: #fce8e8;
+            border-color: #e04444;
+            color: #7a1f1f;
+        }
+        .cap-yellow {
+            background: #fdf5e0;
+            border-color: #e8b34b;
+            color: #7a5f1f;
+        }
+        .cap-green {
+            background: #e6f5ec;
+            border-color: #3baa6b;
+            color: #1a5a3a;
+        }
+        .cap-white {
+            background: #f5f7fa;
+            border-color: #bcc8d8;
+            color: #3d4f66;
+        }
+        .capability-tag .remove-cap {
+            margin-left: 4px;
+            cursor: pointer;
+            color: #8f9eb2;
+            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: 0.1s;
+            background: none;
+            border: none;
+            padding: 0 2px;
+        }
+        .capability-tag .remove-cap:hover {
+            color: #c53e3e;
+        }
+        .add-capability {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px dashed #c2d0e2;
+            border-radius: 40px;
+            padding: 5px 16px;
+            font-size: 0.8rem;
+            color: #4d637f;
+            cursor: pointer;
+            transition: 0.1s;
+            font-weight: 500;
+        }
+        .add-capability:hover {
+            background: #eef4fc;
+            border-color: #7f96b0;
+        }
+        .empty-l2 {
+            color: #7f92ab;
+            font-size: 0.85rem;
+            padding: 6px 0 2px;
+            font-style: italic;
+        }
+        .footer-legend {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px 40px;
+            background: white;
+            padding: 14px 24px;
+            border-radius: 60px;
+            border: 1px solid #e3eaf2;
+            font-size: 0.85rem;
+        }
+        .footer-legend span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-legend .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 14px;
+            display: inline-block;
+        }
+        .dot-red { background: #e04444; }
+        .dot-yellow { background: #e8b34b; }
+        .dot-green { background: #3baa6b; }
+        .dot-white { background: #eaeef4; border: 1px solid #bcc8d8; }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-box {
+            background: white;
+            border-radius: 40px;
+            padding: 32px 36px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        .modal-box h3 {
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .modal-box input, .modal-box select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 40px;
+            border: 1px solid #d6dfeb;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .modal-box .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        .hidden { display: none; }
+        .btn-sm {
+            padding: 4px 12px;
+            font-size: 0.75rem;
+        }
+        .inline-flex { display: inline-flex; align-items: center; gap: 4px; }
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .project-card { padding: 16px; }
+            .l1-block { padding: 12px; }
+        }
+
+        /* Стили для PNG-контейнера (скрыт, используется только для рендеринга) */
+        .png-export-container {
+            position: fixed;
+            left: -9999px;
+            top: 0;
+            width: 1200px;
+            background: white;
+            padding: 30px;
+            z-index: 9999;
+        }
+        .png-export-container .project-card {
+            box-shadow: none !important;
+            border: 1px solid #ddd !important;
+            border-radius: 16px;
+            padding: 20px 24px 24px;
+            background: white;
+        }
+        .png-export-container .l1-block {
+            background: #f9fbfe;
+            border-left: 6px solid #888;
+            padding: 16px 18px 18px;
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+        .png-export-container .capability-tag {
+            border: 1px solid #ccc;
+            padding: 6px 16px 6px 16px;
+            font-size: 0.85rem;
+        }
+        .png-export-container .cap-red { background: #fce8e8 !important; }
+        .png-export-container .cap-yellow { background: #fdf5e0 !important; }
+        .png-export-container .cap-green { background: #e6f5ec !important; }
+        .png-export-container .cap-white { background: #f5f7fa !important; }
+        .png-export-container .project-header {
+            border-bottom: 2px solid #e0e4ea;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+        }
+        .png-export-container .project-title h2 {
+            font-size: 1.4rem;
+        }
+        .png-export-container .l1-header h3 {
+            font-size: 1rem;
+        }
+        .png-export-container .l2-grid {
+            gap: 8px 10px;
+        }
+        .png-export-container .btn,
+        .png-export-container .add-capability,
+        .png-export-container .remove-cap,
+        .png-export-container .l1-actions,
+        .png-export-container .project-actions {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="app"><header><h1>🧭 Карта бизнес-возможностей <small>интерактивная тепловая карта</small></h1> <div class="actions"><button class="btn btn-primary">➕ Добавить проект</button></div></header> <div class="project-grid"><div id="project-0" class="project-card"><div class="project-header"><div class="project-title"><h2>СитиСервис</h2> <span class="badge">7 блоков L1</span></div> <div class="project-actions"><button class="btn btn-png btn-sm">🖼 PNG</button> <button class="btn btn-outline btn-sm">➕ L1</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l1-container"><div class="l1-block"><div class="l1-header"><h3>Работа с клиентами и жильцами</h3> <div class="l1-actions"><button disabled="disabled" class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-yellow">
+                            Приём обращений
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Информирование жильцов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Контроль статуса обращения
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Обработка жалоб
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Управление объектами</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-green">
+                            Мониторинг оборудования
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Планирование обслуживания
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Сбор телеметрии с оборудования
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Обработка телеметрии
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Управление температурным режимом объектов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-red">
+                            Удалённое управление активами
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Диагностика технических отклонений
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Управление инцидентами</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-yellow">
+                            Обнаружение инцидентов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Классификация инцидентов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Приоритизация инцидентов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Назначение исполнителя
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Контроль SLA
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Закрытие инцидента
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Управление ремонтными и выездными работами</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-yellow">
+                            Планирование выездов и маршрутов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Назначение инженера
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Планирование маршрутов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Выполнение работ на объекте
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Фотофиксация и отчётность
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Подтверждение устранения проблемы
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Управление данными и аналитикой</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-red">
+                            Хранение телеметрии
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Агрегация данных
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Аналитика отклонений
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            История событий и команд
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-green">
+                            Отчётность по состоянию оборудования
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Финансы и управление затратами</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-red">
+                            Контроль ТСО ИТ-инфраструктуры
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Учёт стоимости выездов
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Бюджетирование обслуживания
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Оценка экономического эффекта трансформации
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div><div class="l1-block"><div class="l1-header"><h3>Управление персоналом и операционной эффективностью</h3> <div class="l1-actions"><button class="btn btn-move">↑</button> <button disabled="disabled" class="btn btn-move">↓</button> <button class="btn btn-danger btn-sm">✕</button></div></div> <div class="l2-grid"><div class="capability-tag cap-yellow">
+                            Управление сменами диспетчеров
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Управление загрузкой инженеров
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Контроль производительности команд
+                            <button class="remove-cap">×</button></div><div class="capability-tag cap-yellow">
+                            Обучение работе с цифровыми инструментами
+                            <button class="remove-cap">×</button></div> <button class="add-capability">+ добавить</button></div></div> <!----></div></div></div> <!----> <div class="footer-legend"><span><span class="dot dot-red"></span> Красный — высокая проблема</span> <span><span class="dot dot-yellow"></span> Жёлтый — ограничения</span> <span><span class="dot dot-green"></span> Зелёный — стабильно</span> <span><span class="dot dot-white"></span> Белый — без оценки</span> <span style="color: rgb(108, 126, 150);">↑↓ — переместить блок L1</span> <span style="color: rgb(108, 126, 150);">✕ — удалить элемент</span> <span style="color: rgb(108, 126, 150);">🖼 PNG — экспорт в изображение</span></div></div>
+
+<script src="./Интерактивная карта бизнес-возможностей · СитиСервис_files/vue.js"></script>
+<script src="./Интерактивная карта бизнес-возможностей · СитиСервис_files/html2canvas.min.js"></script>
+<script>
+    (function() {
+        const initialProject = {
+            name: 'СитиСервис',
+            l1Blocks: [
+                { name: 'Работа с клиентами и жильцами', capabilities: [
+                    { name: 'Приём обращений', color: 'yellow' },
+                    { name: 'Информирование жильцов', color: 'yellow' },
+                    { name: 'Контроль статуса обращения', color: 'yellow' },
+                    { name: 'Обработка жалоб', color: 'yellow' }
+                ]},
+                { name: 'Управление объектами', capabilities: [
+                    { name: 'Мониторинг оборудования', color: 'green' },
+                    { name: 'Планирование обслуживания', color: 'yellow' },
+                    { name: 'Сбор телеметрии с оборудования', color: 'yellow' },
+                    { name: 'Обработка телеметрии', color: 'yellow' },
+                    { name: 'Управление температурным режимом объектов', color: 'yellow' },
+                    { name: 'Удалённое управление активами', color: 'red' },
+                    { name: 'Диагностика технических отклонений', color: 'yellow' }
+                ]},
+                { name: 'Управление инцидентами', capabilities: [
+                    { name: 'Обнаружение инцидентов', color: 'yellow' },
+                    { name: 'Классификация инцидентов', color: 'yellow' },
+                    { name: 'Приоритизация инцидентов', color: 'yellow' },
+                    { name: 'Назначение исполнителя', color: 'yellow' },
+                    { name: 'Контроль SLA', color: 'yellow' },
+                    { name: 'Закрытие инцидента', color: 'yellow' }
+                ]},
+                { name: 'Управление ремонтными и выездными работами', capabilities: [
+                    { name: 'Планирование выездов и маршрутов', color: 'yellow' },
+                    { name: 'Назначение инженера', color: 'yellow' },
+                    { name: 'Планирование маршрутов', color: 'yellow' },
+                    { name: 'Выполнение работ на объекте', color: 'yellow' },
+                    { name: 'Фотофиксация и отчётность', color: 'yellow' },
+                    { name: 'Подтверждение устранения проблемы', color: 'yellow' }
+                ]},
+                { name: 'Управление данными и аналитикой', capabilities: [
+                    { name: 'Хранение телеметрии', color: 'red' },
+                    { name: 'Агрегация данных', color: 'yellow' },
+                    { name: 'Аналитика отклонений', color: 'yellow' },
+                    { name: 'История событий и команд', color: 'yellow' },
+                    { name: 'Отчётность по состоянию оборудования', color: 'green' }
+                ]},
+                { name: 'Финансы и управление затратами', capabilities: [
+                    { name: 'Контроль ТСО ИТ-инфраструктуры', color: 'red' },
+                    { name: 'Учёт стоимости выездов', color: 'yellow' },
+                    { name: 'Бюджетирование обслуживания', color: 'yellow' },
+                    { name: 'Оценка экономического эффекта трансформации', color: 'yellow' }
+                ]},
+                { name: 'Управление персоналом и операционной эффективностью', capabilities: [
+                    { name: 'Управление сменами диспетчеров', color: 'yellow' },
+                    { name: 'Управление загрузкой инженеров', color: 'yellow' },
+                    { name: 'Контроль производительности команд', color: 'yellow' },
+                    { name: 'Обучение работе с цифровыми инструментами', color: 'yellow' }
+                ]}
+            ]
+        };
+
+        new Vue({
+            el: '#app',
+            data: {
+                projects: [JSON.parse(JSON.stringify(initialProject))],
+                modalOpen: false,
+                modalMode: 'project',
+                modalInput: '',
+                modalColor: 'yellow',
+                modalTarget: { pIdx: -1, l1Idx: -1 },
+                isExporting: false,
+            },
+            methods: {
+                openAddProject() {
+                    this.modalMode = 'project';
+                    this.modalInput = '';
+                    this.modalColor = 'yellow';
+                    this.modalTarget = { pIdx: -1, l1Idx: -1 };
+                    this.modalOpen = true;
+                },
+                openAddL1(pIdx) {
+                    this.modalMode = 'l1';
+                    this.modalInput = '';
+                    this.modalColor = 'yellow';
+                    this.modalTarget = { pIdx, l1Idx: -1 };
+                    this.modalOpen = true;
+                },
+                openAddL2(pIdx, l1Idx) {
+                    this.modalMode = 'cap';
+                    this.modalInput = '';
+                    this.modalColor = 'yellow';
+                    this.modalTarget = { pIdx, l1Idx };
+                    this.modalOpen = true;
+                },
+                closeModal() {
+                    this.modalOpen = false;
+                    this.modalInput = '';
+                },
+                confirmModal() {
+                    const val = this.modalInput.trim();
+                    if (!val) return;
+                    const { pIdx, l1Idx } = this.modalTarget;
+                    if (this.modalMode === 'project') {
+                        this.projects.push({
+                            name: val,
+                            l1Blocks: []
+                        });
+                    } else if (this.modalMode === 'l1') {
+                        if (pIdx === -1 || pIdx >= this.projects.length) return;
+                        this.projects[pIdx].l1Blocks.push({
+                            name: val,
+                            capabilities: []
+                        });
+                    } else if (this.modalMode === 'cap') {
+                        if (pIdx === -1 || pIdx >= this.projects.length) return;
+                        const l1 = this.projects[pIdx].l1Blocks[l1Idx];
+                        if (!l1) return;
+                        l1.capabilities.push({
+                            name: val,
+                            color: this.modalColor || 'yellow'
+                        });
+                    }
+                    this.closeModal();
+                },
+                moveL1(pIdx, l1Idx, direction) {
+                    const blocks = this.projects[pIdx].l1Blocks;
+                    const newIdx = l1Idx + direction;
+                    if (newIdx < 0 || newIdx >= blocks.length) return;
+                    // меняем местами
+                    const [removed] = blocks.splice(l1Idx, 1);
+                    blocks.splice(newIdx, 0, removed);
+                },
+                removeProject(pIdx) {
+                    if (this.projects.length <= 1) {
+                        if (!confirm('Удалить последний проект?')) return;
+                    }
+                    this.projects.splice(pIdx, 1);
+                },
+                removeL1(pIdx, l1Idx) {
+                    if (this.projects[pIdx].l1Blocks.length <= 1) {
+                        if (!confirm('Удалить последний блок L1?')) return;
+                    }
+                    this.projects[pIdx].l1Blocks.splice(l1Idx, 1);
+                },
+                removeCap(pIdx, l1Idx, capIdx) {
+                    const caps = this.projects[pIdx].l1Blocks[l1Idx].capabilities;
+                    if (caps.length <= 1) {
+                        if (!confirm('Удалить последнюю возможность?')) return;
+                    }
+                    caps.splice(capIdx, 1);
+                },
+                async exportPNG(pIdx) {
+                    if (this.isExporting) return;
+                    this.isExporting = true;
+
+                    try {
+                        const project = this.projects[pIdx];
+                        const el = document.getElementById('project-' + pIdx);
+                        if (!el) {
+                            this.isExporting = false;
+                            return;
+                        }
+
+                        // создаем глубокий клон
+                        const clone = el.cloneNode(true);
+                        
+                        // удаляем все интерактивные элементы
+                        clone.querySelectorAll('.btn, .add-capability, .remove-cap, .l1-actions, .project-actions').forEach(btn => btn.remove());
+                        
+                        // оборачиваем в контейнер со стилями
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'png-export-container';
+                        wrapper.style.position = 'fixed';
+                        wrapper.style.left = '-9999px';
+                        wrapper.style.top = '0';
+                        wrapper.style.width = '1200px';
+                        wrapper.style.background = 'white';
+                        wrapper.style.padding = '30px';
+                        wrapper.style.zIndex = '9999';
+                        wrapper.appendChild(clone);
+                        document.body.appendChild(wrapper);
+
+                        // ждём рендеринга
+                        await new Promise(resolve => setTimeout(resolve, 100));
+
+                        // создаём скриншот
+                        const canvas = await html2canvas(wrapper, {
+                            scale: 2,
+                            useCORS: true,
+                            allowTaint: false,
+                            backgroundColor: '#ffffff',
+                            width: 1200,
+                            logging: false,
+                        });
+
+                        // удаляем временный контейнер
+                        document.body.removeChild(wrapper);
+
+                        // скачиваем PNG
+                        const link = document.createElement('a');
+                        link.download = project.name + '_карта_возможностей.png';
+                        link.href = canvas.toDataURL('image/png');
+                        link.click();
+
+                    } catch (err) {
+                        console.warn('PNG export error:', err);
+                    } finally {
+                        this.isExporting = false;
+                    }
+                }
+            }
+        });
+    })();
+</script>
+
+</body></html>
